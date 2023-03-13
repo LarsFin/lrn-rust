@@ -15,6 +15,15 @@ fi
 
 case $2 in
 
+    new)
+        cd $1
+        if [ -z $3 ]; then
+            echo "No project name passed"
+            exit 1
+        fi
+        cargo new $3
+        ;;
+
     build)
         cd $1
         cargo build ${@:3}
@@ -28,6 +37,11 @@ case $2 in
     run)
         cd $1
         cargo run ${@:3}
+        ;;
+
+    doc)
+        cd $1
+        cargo doc ${@:3}
         ;;
     
     *)
